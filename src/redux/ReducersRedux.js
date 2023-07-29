@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE, SAVE_USER_DATA } from './ActionRedux';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, SAVE_USER_DATA, SET_LOGGED_IN } from './ActionRedux';
 
 const initialState = {
   user: null,
@@ -12,6 +12,8 @@ const rootReducer = (state = initialState, action) => {
     case LOGIN_FAILURE:
       return { ...state, user: null, error: action.payload };
     case SAVE_USER_DATA:
+      return { ...state, user: action.payload };
+    case SET_LOGGED_IN:
       return { ...state, user: action.payload };
     default:
       return state;

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginSuccess, loginFailure } from '../redux/ActionRedux';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
  
-  const history = useNavigate();
+  
 
   const error = useSelector((state) => state.error);
   const success = useSelector((state) => state.success);
@@ -31,8 +31,9 @@ const Login = () => {
       };
       
       dispatch(loginSuccess(ApiResponse));
-      history.push("/profile");
+    //   useNavigate("/profile");
     } catch (error) {
+        console.log(error)
       dispatch(loginFailure("Login failed. Please check your credentials."));
     }
   };
