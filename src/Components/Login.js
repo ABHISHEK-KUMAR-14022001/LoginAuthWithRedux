@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginSuccess, loginFailure } from '../redux/ActionRedux';
-import axios from 'axios';
-// import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginSuccess, loginFailure } from "../redux/ActionRedux";
+import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
- 
-  
 
   const error = useSelector((state) => state.error);
   const success = useSelector((state) => state.success);
@@ -29,11 +26,10 @@ const Login = () => {
         username: result.data.username,
         email: result.data.email,
       };
-      
+
       dispatch(loginSuccess(ApiResponse));
-    //   useNavigate("/profile");
     } catch (error) {
-        console.log(error)
+      console.log(error);
       dispatch(loginFailure("Login failed. Please check your credentials."));
     }
   };
@@ -83,7 +79,8 @@ const Login = () => {
           </div>
         </form>
         <div className="sigup-link">
-          Don’t have an account? <span className="sigup-link-text">Sign up</span>
+          Don’t have an account?{" "}
+          <span className="sigup-link-text">Sign up</span>
         </div>
       </div>
       <div className="line-div"></div>
